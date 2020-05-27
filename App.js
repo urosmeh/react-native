@@ -11,7 +11,7 @@ export default function App() {
       [...prevGoals, { key: Math.random().toString(), value: goalTitle}]); //it takes old list of --goals--, adds a --goal--
     //setEnteredGoal("");
 
-    setIsAddMode(false);
+    setIsAddMode(false); 
   };
 
   function removeGoalHandler(goalId) {
@@ -21,6 +21,10 @@ export default function App() {
   }
 
   const [isAddMode, setIsAddMode] = useState(false);
+
+  function cancelGoalAdditionHandler(){
+    setIsAddMode(false);
+  }
 
   return (
     //#region region
@@ -64,8 +68,7 @@ export default function App() {
 
     <View style={styles.mainView}>
       <Button title="Add a goal" onPress={() => setIsAddMode(true)}/>
-
-      <GoalInput visible={isAddMode} onAddedGoal={addGoalHandler}></GoalInput>
+      <GoalInput visible={isAddMode} onAddedGoal={addGoalHandler} onCancel={cancelGoalAdditionHandler} ></GoalInput>
 
       {/* Scrollview for fewer items, but for a lot of data, use flatlist.
           In scrollview you have to map data, in flatlist you can pass it in a prop */}

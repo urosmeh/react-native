@@ -10,11 +10,16 @@ export default function App() {
     setGoals(prevGoals => 
       [...prevGoals, { key: Math.random().toString(), value: goalTitle}]); //it takes old list of --goals--, adds a --goal--
     //setEnteredGoal("");
-
     setIsAddMode(false); 
   };
 
+  console.log("rerendered");
+  console.log(goals);
+
   function removeGoalHandler(goalId) {
+    console.log("deleted goal: " + goalId);
+    console.log(JSON.stringify(goals));
+
     setGoals(prevGoals => {
       return prevGoals.filter((goal) => goal.key !== goalId);
     })

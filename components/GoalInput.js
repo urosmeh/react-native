@@ -21,10 +21,14 @@ function GoalInput(props) {
                     placeholder="write your goals here"
                     value={enteredGoal}>
                 </TextInput>
-                <Button title="Cancel" color="red" onPress={props.onCancel} />
-                <Button
-                    title="Add"
-                    onPress={addGoalHandler} />
+                <View style={styles.buttonContainer}>
+                    <View style={styles.buttonStyle}>
+                        <Button title="Cancel" color="red" onPress={props.onCancel} />
+                    </View>
+                    <View style={styles.buttonStyle}>
+                        <Button title="Add" onPress={addGoalHandler} />
+                    </View>
+                </View>
             </View>
         </Modal>
     );
@@ -45,6 +49,16 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 10,
     },
+
+    buttonContainer: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        width: "80%",
+    },
+
+    buttonStyle: {
+        width: "30%",
+    }
 });
 
 export default GoalInput;
